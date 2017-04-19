@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-chai-http/node_modules/chai-http/lib/request.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-chai-http">npmtest-chai-http (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-chai-http/node_modules/chai-http/lib/request.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">26.53% <small>(13 / 49)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">4.17% <small>(1 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">9.09% <small>(1 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">29.55% <small>(13 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-chai-http/node_modules/chai-http/lib/</a> &#187; request.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*!
+ * chai-http - request helper
+ * Copyright(c) 2011-2012 Jake Luer &lt;jake@alogicalparadox.com&gt;
+ * MIT Licensed
+ */
+&nbsp;
+/*!
+ * Module dependancies
+ */
+&nbsp;
+var http = require('http')
+  , https = require('https')
+  , methods = require('methods')
+  , superagent = require('superagent')
+  , Agent = superagent.agent
+  , Request = superagent.Request
+  , util = require('util');
+&nbsp;
+/**
+ * ## Integration Testing
+ *
+ * Chai HTTP provides an interface for live integration
+ * testing via [superagent](https://github.com/visionmedia/superagent).
+ * To do this, you must first
+ * construct a request to an application or url.
+ *
+ * Upon construction you are provided a chainable api that
+ * allows you to specify the http VERB request (get, post, etc)
+ * that you wish to invoke.
+ *
+ * #### Application / Server
+ *
+ * You may use a function (such as an express or connect app)
+ * or a node.js http(s) server as the foundation for your request.
+ * If the server is not running, chai-http will find a suitable
+ * port to listen on for a given test.
+ *
+ * __Note:__ This feature is only supported on Node.js, not in web browsers.
+ *
+ * ```js
+ * chai.request(app)
+ *   .get('/')
+ * ```
+ *
+ * #### URL
+ *
+ * You may also use a base url as the foundation of your request.
+ *
+ * ```js
+ * chai.request('http://localhost:8080')
+ *   .get('/')
+ * ```
+ *
+ * #### Setting up requests
+ *
+ * Once a request is created with a given VERB, it can have headers, form data,
+ * json, or even file attachments added to it, all with a simple API:
+ *
+ * ```js
+ * // Send some JSON
+ * chai.request(app)
+ *   .put('/user/me')
+ *   .set('X-API-Key', 'foobar')
+ *   .send({ password: '123', confirmPassword: '123' })
+ * ```
+ *
+ * ```js
+ * // Send some Form Data
+ * chai.request(app)
+ *   .post('/user/me')
+ *   .field('_method', 'put')
+ *   .field('password', '123')
+ *   .field('confirmPassword', '123')
+ * ```
+ *
+ * ```js
+ * // Attach a file
+ * chai.request(app)
+ *   .post('/user/avatar')
+ *   .attach('imageField', fs.readFileSync('avatar.png'), 'avatar.png')
+ * ```
+ *
+ * ```js
+ * // Authenticate with Basic authentication
+ * chai.request(app)
+ *   .get('/protected')
+ *   .auth('user', 'pass')
+ * ```
+ *
+ * ```js
+ * // Chain some GET query parameters
+ * chai.request(app)
+ *   .get('/search')
+ *   .query({name: 'foo', limit: 10}) // /search?name=foo&amp;limit=10
+ * ```
+ *
+ * #### Dealing with the response - traditional
+ *
+ * To make the request and assert on its response, the `end` method can be used:
+ *
+ * ```js
+ * chai.request(app)
+ *   .put('/user/me')
+ *   .send({ password: '123', confirmPassword: '123' })
+ *   .end(function (err, res) {
+ *      expect(err).to.be.null;
+ *      expect(res).to.have.status(200);
+ *   });
+ * ```
+ * ##### Caveat
+ * Because the `end` function is passed a callback, assertions are run
+ * asynchronously. Therefore, a mechanism must be used to notify the testing
+ * framework that the callback has completed. Otherwise, the test will pass before
+ * the assertions are checked.
+ *
+ * For example, in the [Mocha test framework](http://mochajs.org/), this is
+ * accomplished using the
+ * [`done` callback](https://mochajs.org/#asynchronous-code), which signal that the
+ * callback has completed, and the assertions can be verified:
+ *
+ * ```js
+ * it('fails, as expected', function(done) { // &lt;= Pass in done callback
+ *   chai.request('http://localhost:8080')
+ *   .get('/')
+ *   .end(function(err, res) {
+ *     expect(res).to.have.status(123);
+ *     done();                               // &lt;= Call done to signal callback end
+ *   });
+ * }) ;
+ *
+ * it('succeeds silently!', function() {   // &lt;= No done callback
+ *   chai.request('http://localhost:8080')
+ *   .get('/')
+ *   .end(function(err, res) {
+ *     expect(res).to.have.status(123);    // &lt;= Test completes before this runs
+ *   });
+ * }) ;
+ * ```
+ *
+ * When `done` is passed in, Mocha will wait until the call to `done()`, or until
+ * the [timeout](http://mochajs.org/#timeouts) expires. `done` also accepts an
+ * error parameter when signaling completion.
+ *
+ * #### Dealing with the response - Promises
+ *
+ * If `Promise` is available, `request()` becomes a Promise capable library -
+ * and chaining of `then`s becomes possible:
+ *
+ * ```js
+ * chai.request(app)
+ *   .put('/user/me')
+ *   .send({ password: '123', confirmPassword: '123' })
+ *   .then(function (res) {
+ *      expect(res).to.have.status(200);
+ *   })
+ *   .catch(function (err) {
+ *      throw err;
+ *   })
+ * ```
+ *
+ * __Note:__ Node.js version 0.10.x and some older web browsers do not have
+ * native promise support. You can use any promise library, such as
+ * [es6-promise](https://github.com/jakearchibald/es6-promise) or
+ * [kriskowal/q](https://github.com/kriskowal/q) and call the `addPromise`
+ * method to use that library with Chai HTTP. For example:
+ *
+ * ```js
+ * var chai = require('chai');
+ * chai.use(require('chai-http'));
+ *
+ * // Add promise support if this does not exist natively.
+ * if (!global.Promise) {
+ *   var q = require('q');
+ *   chai.request.addPromises(q.Promise);
+ * }
+ * ```
+ *
+ * #### Retaining cookies with each request
+ *
+ * Sometimes you need to keep cookies from one request, and send them with the
+ * next. For this, `.request.agent()` is available:
+ *
+ * ```js
+ * // Log in
+ * var agent = chai.request.agent(app)
+ * agent
+ *   .post('/session')
+ *   .send({ username: 'me', password: '123' })
+ *   .then(function (res) {
+ *     expect(res).to.have.cookie('sessionid');
+ *     // The `agent` now has the sessionid cookie saved, and will send it
+ *     // back to the server in the next request:
+ *     return agent.get('/user/me')
+ *       .then(function (res) {
+ *          expect(res).to.have.status(200);
+ *       })
+ *   })
+ * ```
+ *
+ */
+&nbsp;
+module.exports = <span class="fstat-no" title="function not covered" >function (app) {</span>
+&nbsp;
+  /*!
+   * @param {Mixed} function or server
+   * @returns {Object} API
+   */
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var server = ('function' === typeof app)</span>
+      ? http.createServer(app)
+      : app
+    , obj = {};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  methods.forEach(<span class="fstat-no" title="function not covered" >function (method) {</span></span>
+<span class="cstat-no" title="statement not covered" >    obj[method] = <span class="fstat-no" title="function not covered" >function (path) {</span></span>
+<span class="cstat-no" title="statement not covered" >      return new Test(server, method, path);</span>
+    };
+  });
+<span class="cstat-no" title="statement not covered" >  obj.del = obj.delete;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return obj;</span>
+};
+&nbsp;
+module.exports.Test = Test;
+module.exports.Request = Test;
+module.exports.agent = TestAgent;
+&nbsp;
+/*!
+ * Test
+ *
+ * An extension of superagent.Request,
+ * this provides the same chainable api
+ * as superagent so all things can be modified.
+ *
+ * @param {Object|String} server, app, or url
+ * @param {String} method
+ * @param {String} path
+ * @api private
+ */
+&nbsp;
+<span class="fstat-no" title="function not covered" >function Test (app, method, path) {</span>
+<span class="cstat-no" title="statement not covered" >  Request.call(this, method, path);</span>
+<span class="cstat-no" title="statement not covered" >  this.app = app;</span>
+<span class="cstat-no" title="statement not covered" >  this.url = typeof app === 'string' ? app + path : serverAddress(app, path);</span>
+}
+util.inherits(Test, Request);
+&nbsp;
+<span class="fstat-no" title="function not covered" >function serverAddress (app, path) {</span>
+<span class="cstat-no" title="statement not covered" >  if ('string' === typeof app) {</span>
+<span class="cstat-no" title="statement not covered" >    return app + path;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  var addr = app.address();</span>
+<span class="cstat-no" title="statement not covered" >  if (!addr) {</span>
+<span class="cstat-no" title="statement not covered" >    app.listen(0);</span>
+<span class="cstat-no" title="statement not covered" >    addr = app.address();</span>
+  }
+<span class="cstat-no" title="statement not covered" >  var protocol = (app instanceof https.Server) ? 'https' : 'http';</span>
+  // If address is "unroutable" IPv4/6 address, then set to localhost
+<span class="cstat-no" title="statement not covered" >  if (addr.address === '0.0.0.0' || addr.address === '::') {</span>
+<span class="cstat-no" title="statement not covered" >    addr.address = '127.0.0.1';</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return protocol + '://' + addr.address + ':' + addr.port + path;</span>
+}
+&nbsp;
+&nbsp;
+/*!
+ * agent
+ *
+ * Follows the same API as superagent.Request,
+ * but allows persisting of cookies between requests.
+ *
+ * @param {Object|String} server, app, or url
+ * @param {String} method
+ * @param {String} path
+ * @api private
+ */
+&nbsp;
+<span class="fstat-no" title="function not covered" >function TestAgent(app) {</span>
+<span class="cstat-no" title="statement not covered" >  if (!(this instanceof TestAgent)) <span class="cstat-no" title="statement not covered" >return new TestAgent(app);</span></span>
+<span class="cstat-no" title="statement not covered" >  if (typeof app === 'function') <span class="cstat-no" title="statement not covered" >app = http.createServer(app);</span></span>
+<span class="cstat-no" title="statement not covered" >  (Agent || Request).call(this);</span>
+<span class="cstat-no" title="statement not covered" >  this.app = app;</span>
+}
+util.inherits(TestAgent, Agent || <span class="branch-1 cbranch-no" title="branch not covered" >Request)</span>;
+&nbsp;
+// override HTTP verb methods
+methods.forEach(function(method){
+  TestAgent.prototype[method] = <span class="fstat-no" title="function not covered" >function(url){</span>
+<span class="cstat-no" title="statement not covered" >    var req = new Test(this.app, method, url)</span>
+      , self = this;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (Agent) {</span>
+      // When running in Node, cookies are managed via
+      // `Agent._saveCookies()` and `Agent._attachCookies()`.
+<span class="cstat-no" title="statement not covered" >      req.on('response', <span class="fstat-no" title="function not covered" >function (res) {</span> <span class="cstat-no" title="statement not covered" >self._saveCookies(res); </span>});</span>
+<span class="cstat-no" title="statement not covered" >      req.on('redirect', <span class="fstat-no" title="function not covered" >function (res) {</span> <span class="cstat-no" title="statement not covered" >self._saveCookies(res); </span>});</span>
+<span class="cstat-no" title="statement not covered" >      req.on('redirect', <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >self._attachCookies(req); </span>});</span>
+<span class="cstat-no" title="statement not covered" >      this._attachCookies(req);</span>
+    }
+    else {
+      // When running in a web browser, cookies are managed via `Request.withCredentials()`.
+      // The browser will attach cookies based on same-origin policy.
+      // https://tools.ietf.org/html/rfc6454#section-3
+<span class="cstat-no" title="statement not covered" >      req.withCredentials();</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return req;</span>
+  };
+});
+&nbsp;
+TestAgent.prototype.del = TestAgent.prototype.delete;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 19 2017 02:52:13 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
