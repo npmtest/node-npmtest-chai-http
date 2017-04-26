@@ -1,6 +1,6 @@
 # npmtest-chai-http
 
-#### test coverage for  [chai-http (v3.0.0)](https://github.com/chaijs/chai-http#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-chai-http.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-chai-http) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-chai-http.svg)](https://travis-ci.org/npmtest/node-npmtest-chai-http)
+#### basic test coverage for  [chai-http (v3.0.0)](https://github.com/chaijs/chai-http#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-chai-http.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-chai-http) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-chai-http.svg)](https://travis-ci.org/npmtest/node-npmtest-chai-http)
 
 #### Extend Chai Assertion library with tests for http apis
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-chai-http/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-chai-http/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-chai-http/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-chai-http/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-chai-http/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-chai-http/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-chai-http/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-chai-http/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-chai-http/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-chai-http/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-chai-http/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-chai-http/build/coverage.html/index.html)
 
@@ -126,7 +126,8 @@
         "test": "istanbul cover --report lcovonly _mocha",
         "watch": "npm run build:js -- --watch"
     },
-    "version": "3.0.0"
+    "version": "3.0.0",
+    "bin": {}
 }
 ```
 
